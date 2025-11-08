@@ -7,19 +7,19 @@
   "miniapp": {
     "version": "1",
     "name": "Base First Transaction Tracker",
-    "iconUrl": "https://base-eight-gilt.vercel.app/icon.png",
+    "iconUrl": "https://avatars.githubusercontent.com/u/108554348?s=1024&v=4",
     "homeUrl": "https://base-eight-gilt.vercel.app",
-    "splashImageUrl": "https://base-eight-gilt.vercel.app/splash.png",
+    "splashImageUrl": "https://avatars.githubusercontent.com/u/108554348?s=200&v=4",
     "splashBackgroundColor": "#0052ff",
     "subtitle": "Track your Base network debut",
     "description": "Discover when you made your first move on the Base network and celebrate your onchain journey.",
     "primaryCategory": "utility",
     "tags": ["blockchain", "ethereum", "base", "transactions", "web3"],
     "buttonTitle": "Track Your First Tx",
-    "imageUrl": "https://base-eight-gilt.vercel.app/image.png",
+    "imageUrl": "https://i.imgur.com/YourImageId.png",
     "ogTitle": "Base First Transaction Tracker",
     "ogDescription": "Discover when you made your first move on the Base network",
-    "ogImageUrl": "https://base-eight-gilt.vercel.app/image.png",
+    "ogImageUrl": "https://pbs.twimg.com/profile_banners/1455611262664417281/1699896118/1500x500",
     "requiredChains": ["eip155:8453"]
   }
 }
