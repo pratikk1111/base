@@ -20,7 +20,6 @@ const BaseTransactionTracker: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
-  const [isSDKReady, setIsSDKReady] = useState<boolean>(false);
   
   // Get connected wallet data from Wagmi
   const { address: connectedAddress, isConnected } = useAccount();
@@ -33,11 +32,9 @@ const BaseTransactionTracker: React.FC = () => {
     const initializeSDK = async () => {
       try {
         await sdk.actions.ready();
-        setIsSDKReady(true);
+        console.log('Mini App SDK ready');
       } catch (err) {
         console.error('Failed to initialize Mini App SDK:', err);
-        // Still set as ready to allow the app to function
-        setIsSDKReady(true);
       }
     };
     
@@ -133,76 +130,68 @@ const BaseTransactionTracker: React.FC = () => {
 
   return (
     <div className="container">
-      {!isSDKReady ? (
-        <div className="loading">
-          <p>Loading Mini App...</p>
+      <div className="header">
+        <h1>Base First Transaction Tracker</h1>
+        <p>Discover when you made your first move on the Base network</p>
+      </div>
+      
+      <form onSubmit={handleSubmit} className="input-container">
+        <div className="input-group">
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Enter Ethereum address (0x...)"
+            className="input-field"
+          />
+          <button type="submit" className="button" disabled={loading}>
+            {loading ? 'Searching...' : 'Track My First Tx'}
+          </button>
         </div>
-      ) : (
-        <>
-          <div className="header">
-            <h1>Base First Transaction Tracker</h1>
-            <p>Discover when you made your first move on the Base network</p>
+      </form>
+      
+      {loading && (
+        <div className="loading">
+          <div className="spinner"></div>
+          <p>Searching for your first Base transaction...</p>
+        </div>
+      )}
+      
+      {error && (
+        <div className="error">
+          <p>{error}</p>
+        </div>
+      )}
+      
+      {transactionData && (
+        <div className="result-container">
+          <h2 className="result-title">🎉 Your Base Genesis Moment!</h2>
+          
+          <div className="transaction-info">
+            <div className="info-item">
+              <span className="info-label">First Transaction Date:</span> {transactionData.date}
+            </div>
+            <div className="info-item">
+              <span className="info-label">Transaction Hash:</span> {transactionData.hash.substring(0, 10)}...{transactionData.hash.substring(transactionData.hash.length - 8)}
+            </div>
+            <div className="info-item">
+              <span className="info-label">Block Number:</span> {transactionData.blockNumber.toLocaleString()}
+            </div>
+            <div className="info-item">
+              <span className="info-label">Days Since First Tx:</span> {transactionData.daysSince} days
+            </div>
+            <div className="info-item">
+              <span className="info-label">Milestone:</span> You've been building on Base for {Math.floor(transactionData.daysSince / 30)} months!
+            </div>
           </div>
           
-          <form onSubmit={handleSubmit} className="input-container">
-            <div className="input-group">
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter Ethereum address (0x...)"
-                className="input-field"
-              />
-              <button type="submit" className="button" disabled={loading}>
-                {loading ? 'Searching...' : 'Track My First Tx'}
-              </button>
-            </div>
-          </form>
-          
-          {loading && (
-            <div className="loading">
-              <div className="spinner"></div>
-              <p>Searching for your first Base transaction...</p>
-            </div>
-          )}
-          
-          {error && (
-            <div className="error">
-              <p>{error}</p>
-            </div>
-          )}
-          
-          {transactionData && (
-            <div className="result-container">
-              <h2 className="result-title">🎉 Your Base Genesis Moment!</h2>
-              
-              <div className="transaction-info">
-                <div className="info-item">
-                  <span className="info-label">First Transaction Date:</span> {transactionData.date}
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Transaction Hash:</span> {transactionData.hash.substring(0, 10)}...{transactionData.hash.substring(transactionData.hash.length - 8)}
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Block Number:</span> {transactionData.blockNumber.toLocaleString()}
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Days Since First Tx:</span> {transactionData.daysSince} days
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Milestone:</span> You've been building on Base for {Math.floor(transactionData.daysSince / 30)} months!
-                </div>
-              </div>
-              
-              <button onClick={handleShare} className="share-button">
-                Share My Base Journey 🚀
-              </button>
-            </div>
-          )}
-          
-          {showConfetti && <Confetti />}
-        </>
+          <button onClick={handleShare} className="share-button">
+            Share My Base Journey 🚀
+          </button>
+        </div>
       )}
+      
+      {showConfetti && <Confetti />}
     </div>
   );
 };
