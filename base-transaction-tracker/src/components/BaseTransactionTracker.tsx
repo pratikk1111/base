@@ -102,20 +102,27 @@ const BaseTransactionTracker: React.FC = () => {
     }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     if (!transactionData) return;
     
     const shareText = `I've been building on Base since ${transactionData.date}! 🔵\n\nIt's been ${transactionData.daysSince} days since my first Base transaction!\n\nCheck your Base genesis moment:`;
+    const shareUrl = window.location.href;
     
-    // Copy to clipboard and show confirmation
-    navigator.clipboard.writeText(shareText)
-      .then(() => {
-        alert(`Copied to clipboard! You can now share this on Farcaster:\n\n${shareText}`);
-      })
-      .catch(() => {
-        // Fallback if clipboard fails
-        prompt('Copy this text to share on Farcaster:', shareText);
-      });
+    try {
+      // Try using Farcaster SDK share action
+      await sdk.actions.openUrl(`https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(shareUrl)}`);
+    } catch (error) {
+      console.error('Failed to share via Farcaster:', error);
+      
+      // Fallback: Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`);
+        alert('Copied to clipboard! Share it on Farcaster.');
+      } catch (clipboardError) {
+        // Final fallback
+        prompt('Copy this text to share on Farcaster:', `${shareText}\n\n${shareUrl}`);
+      }
+    }
   };
 
   return (
