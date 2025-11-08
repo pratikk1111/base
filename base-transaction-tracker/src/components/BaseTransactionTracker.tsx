@@ -3,8 +3,7 @@ import { baseService } from '../services/baseService';
 import type { Transaction } from '../services/baseService';
 import Confetti from '../utils/confetti';
 import { sdk } from '@farcaster/miniapp-sdk';
-import { useAccount, useEnsName } from 'wagmi';
-import { useMiniApp } from '@neynar/react';
+import { useAccount } from 'wagmi';
 
 interface TransactionData {
   hash: string;
@@ -23,9 +22,6 @@ const BaseTransactionTracker: React.FC = () => {
   
   // Get connected wallet data from Wagmi
   const { address: connectedAddress, isConnected } = useAccount();
-  const { data: ensName } = useEnsName({
-    address: connectedAddress,
-  });
 
   // Call the ready function when the component mounts
   useEffect(() => {
