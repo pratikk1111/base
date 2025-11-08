@@ -25,16 +25,10 @@ const BaseTransactionTracker: React.FC = () => {
 
   // Call the ready function when the component mounts
   useEffect(() => {
-    const initializeSDK = async () => {
-      try {
-        await sdk.actions.ready();
-        console.log('Mini App SDK ready');
-      } catch (err) {
-        console.error('Failed to initialize Mini App SDK:', err);
-      }
-    };
-    
-    initializeSDK();
+    // Call ready synchronously to hide splash screen immediately
+    sdk.actions.ready().catch((err) => {
+      console.error('Failed to initialize Mini App SDK:', err);
+    });
   }, []);
   
   // Auto-populate address when wallet is connected
