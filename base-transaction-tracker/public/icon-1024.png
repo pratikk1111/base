@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1024" height="1024" fill="#0052ff"/>
-  <circle cx="512" cy="512" r="400" fill="#ffffff"/>
-  <text x="512" y="580" font-family="Arial, sans-serif" font-size="200" font-weight="bold" fill="#0052ff" text-anchor="middle">BASE</text>
-  <text x="512" y="720" font-family="Arial, sans-serif" font-size="80" fill="#0052ff" text-anchor="middle">TX TRACKER</text>
-</svg>

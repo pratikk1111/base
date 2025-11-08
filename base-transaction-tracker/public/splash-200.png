@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="200" fill="#0052ff"/>
-  <circle cx="100" cy="100" r="80" fill="#ffffff"/>
-  <text x="100" y="115" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#0052ff" text-anchor="middle">BASE</text>
-</svg>

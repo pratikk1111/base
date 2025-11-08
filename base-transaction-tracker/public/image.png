@@ -1,0 +1,13 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0052ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cfff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad3)"/>
+  <circle cx="600" cy="315" r="200" fill="#ffffff" opacity="0.95"/>
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="90" font-weight="bold" fill="#0052ff" text-anchor="middle">BASE</text>
+  <text x="600" y="170" font-family="Arial, sans-serif" font-size="42" font-weight="600" fill="#ffffff" text-anchor="middle">Base First Transaction Tracker</text>
+  <text x="600" y="510" font-family="Arial, sans-serif" font-size="32" fill="#ffffff" text-anchor="middle">Discover your Base genesis moment 🔵</text>
+</svg>
