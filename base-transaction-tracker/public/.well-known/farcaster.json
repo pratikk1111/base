@@ -1,4 +1,9 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjIzNzQwNCwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDZGQjM2RmFEYjdBMmMzMTM4YjE3ZmUyNDE2NTMwZmRhQzZhRTIzRTQifQ",
+    "payload": "eyJkb21haW4iOiJiYXNlLWVpZ2h0LWdpbHQudmVyY2VsLmFwcCJ9",
+    "signature": "OAA38P4Zd2vLSVFXmiOTRUXYlNDCOb87QHDUUgqd3nxld0XqlG018VXFBkHY1DOdffxzXe8NQgci5PuUIOhzGBs="
+  },
   "miniapp": {
     "version": "1",
     "name": "Base First Transaction Tracker",
