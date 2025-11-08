@@ -106,21 +106,26 @@ const BaseTransactionTracker: React.FC = () => {
     if (!transactionData) return;
     
     const shareText = `I've been building on Base since ${transactionData.date}! 🔵\n\nIt's been ${transactionData.daysSince} days since my first Base transaction!\n\nCheck your Base genesis moment:`;
-    const shareUrl = window.location.href;
+    const appUrl = 'https://base-eight-gilt.vercel.app';
     
     try {
-      // Try using Farcaster SDK share action
-      await sdk.actions.openUrl(`https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(shareUrl)}`);
+      // Use Warpcast compose URL
+      const composeUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(appUrl)}`;
+      await sdk.actions.openUrl(composeUrl);
     } catch (error) {
-      console.error('Failed to share via Farcaster:', error);
+      console.error('Failed to open composer:', error);
       
       // Fallback: Copy to clipboard
       try {
-        await navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`);
-        alert('Copied to clipboard! Share it on Farcaster.');
+        await navigator.clipboard.writeText(`${shareText}\n\n${appUrl}`);
+        alert('✅ Copied to clipboard! Paste in Warpcast to share.');
       } catch (clipboardError) {
-        // Final fallback
-        prompt('Copy this text to share on Farcaster:', `${shareText}\n\n${shareUrl}`);
+        // Show the text in an alert as final fallback
+        alert(`Share this on Farcaster:
+
+${shareText}
+
+${appUrl}`);
       }
     }
   };
