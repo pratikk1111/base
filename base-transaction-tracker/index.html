@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base First Transaction Tracker</title>
+    
+    <!-- Farcaster Mini App Metadata -->
+    <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://base.org/images/logo.png","button":{"title":"Track Your First Tx","action":{"type":"launch_frame","name":"Base Tracker","url":"https://base-transaction-tracker.example.com","splashImageUrl":"https://base.org/images/logo.png","splashBackgroundColor":"#0052ff"}}}' />
+    <!-- For backward compatibility of legacy Frames -->
+    <meta name="fc:frame" content='{"version":"1","imageUrl":"https://base.org/images/logo.png","button":{"title":"Track Your First Tx","action":{"type":"launch_frame","name":"Base Tracker","url":"https://base-transaction-tracker.example.com","splashImageUrl":"https://base.org/images/logo.png","splashBackgroundColor":"#0052ff"}}}' />
+    <meta property="og:title" content="Base First Transaction Tracker" />
+    <meta property="og:description" content="Discover when you made your first move on the Base network" />
+    <meta property="og:image" content="https://base.org/images/logo.png" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

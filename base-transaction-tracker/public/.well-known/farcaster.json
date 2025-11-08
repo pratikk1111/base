@@ -1,0 +1,19 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "Base First Transaction Tracker",
+    "iconUrl": "https://base.org/images/logo.png",
+    "homeUrl": "https://base-transaction-tracker.example.com",
+    "imageUrl": "https://base.org/images/logo.png",
+    "buttonTitle": "Track Your First Tx",
+    "splashImageUrl": "https://base.org/images/logo.png",
+    "splashBackgroundColor": "#0052ff",
+    "subtitle": "Track your Base network debut",
+    "description": "Discover when you made your first move on the Base network",
+    "primaryCategory": "utility",
+    "tags": ["blockchain", "ethereum", "base", "transactions", "web3"],
+    "ogTitle": "Base First Transaction Tracker",
+    "ogDescription": "Discover when you made your first move on the Base network",
+    "ogImageUrl": "https://base.org/images/logo.png"
+  }
+}
