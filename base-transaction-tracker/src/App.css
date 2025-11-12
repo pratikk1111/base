@@ -2,6 +2,7 @@
   text-align: center;
   min-height: 100vh;
   max-width: 424px;
+  max-height: 695px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,8 @@
   padding: 8px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @keyframes gradientShift {
@@ -21,7 +24,6 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 .container {
   max-width: 100%;
   width: 100%;
@@ -308,6 +310,8 @@
 @media (max-width: 768px) {
   .App {
     padding: 6px;
+    max-height: none;
+    min-height: 100vh;
   }
   
   .container {
@@ -340,4 +344,23 @@
   .info-label {
     font-size: 0.65rem;
   }
+}
+
+/* Custom scrollbar for web view */
+.App::-webkit-scrollbar {
+  width: 6px;
+}
+
+.App::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.App::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.App::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
