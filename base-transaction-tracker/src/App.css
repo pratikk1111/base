@@ -66,6 +66,54 @@
   font-weight: 500;
 }
 
+.farcaster-addresses {
+  margin: 8px 0;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.03), rgba(0, 167, 255, 0.03));
+  border-radius: 8px;
+  border: 1px solid rgba(0, 82, 255, 0.2);
+}
+
+.addresses-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0052ff;
+  margin: 0 0 6px 0;
+  text-align: left;
+}
+
+.addresses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.address-chip {
+  background: white;
+  border: 2px solid #0052ff;
+  color: #0052ff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.address-chip:hover {
+  background: linear-gradient(135deg, #0052ff, #00a7ff);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 82, 255, 0.3);
+}
+
+.address-chip.active {
+  background: linear-gradient(135deg, #0052ff, #00a7ff);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 82, 255, 0.4);
+}
+
 .input-container {
   margin: 0;
 }

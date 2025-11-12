@@ -19,6 +19,8 @@ const BaseTransactionTracker: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const [farcasterAddresses, setFarcasterAddresses] = useState<string[]>([]);
+  const [loadingAddresses, setLoadingAddresses] = useState<boolean>(false);
   
   // Get connected wallet data from Wagmi
   const { address: connectedAddress, isConnected } = useAccount();
@@ -29,6 +31,9 @@ const BaseTransactionTracker: React.FC = () => {
     sdk.actions.ready().catch((err) => {
       console.error('Failed to initialize Mini App SDK:', err);
     });
+    
+    // Fetch Farcaster user's verified addresses
+    fetchFarcasterAddresses();
   }, []);
   
   // Auto-populate address when wallet is connected
@@ -44,6 +49,32 @@ const BaseTransactionTracker: React.FC = () => {
       return /^0x[a-fA-F0-9]{40}$/.test(addr);
     } catch (e) {
       return false;
+    }
+  };
+
+  const fetchFarcasterAddresses = async () => {
+    setLoadingAddresses(true);
+    try {
+      const context = await sdk.context;
+      if (context?.user) {
+        // Get all verified EVM addresses from Farcaster
+        const userContext = context.user as any;
+        if (userContext.verifications) {
+          const addresses = userContext.verifications.filter((v: string) => 
+            v.startsWith('0x') && validateAddress(v)
+          );
+          setFarcasterAddresses(addresses);
+          
+          // Auto-populate with first verified address if available
+          if (addresses.length > 0 && !address) {
+            setAddress(addresses[0]);
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Failed to fetch Farcaster addresses:', err);
+    } finally {
+      setLoadingAddresses(false);
     }
   };
 
@@ -136,6 +167,25 @@ ${appUrl}`);
         <h1>Base First Transaction Tracker</h1>
         <p>Discover when you made your first move on the Base network</p>
       </div>
+      
+      {/* Show Farcaster connected addresses */}
+      {farcasterAddresses.length > 0 && (
+        <div className="farcaster-addresses">
+          <p className="addresses-label">Your Farcaster Addresses:</p>
+          <div className="addresses-list">
+            {farcasterAddresses.map((addr, idx) => (
+              <button
+                key={idx}
+                onClick={() => setAddress(addr)}
+                className={`address-chip ${address === addr ? 'active' : ''}`}
+                type="button"
+              >
+                {addr.substring(0, 6)}...{addr.substring(addr.length - 4)}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       
       <form onSubmit={handleSubmit} className="input-container">
         <div className="input-group">
