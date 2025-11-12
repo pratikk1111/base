@@ -136,7 +136,7 @@ const BaseTransactionTracker: React.FC = () => {
   const handleShare = async () => {
     if (!transactionData) return;
     
-    const shareText = `I've been building on Base since ${transactionData.date}! 🔵\n\nIt's been ${transactionData.daysSince} days since my first Base transaction!\n\nCheck your Base genesis moment:`;
+    const shareText = `I've been building on Base since ${transactionData.date}! 🟦\n\nIt's been ${transactionData.daysSince} days since my first Base transaction!\n\nCheck your Base genesis moment:`;
     const appUrl = 'https://base-eight-gilt.vercel.app';
     
     try {
