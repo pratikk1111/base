@@ -57,7 +57,7 @@ export function generateFrameMetadata(address: string) {
       <meta property="fc:frame:image" content="https://base.org/images/logo.png" />
       <meta property="fc:frame:button:1" content="Share" action="post" />
       <meta property="og:title" content="Base First Transaction Tracker" />
-      <meta property="og:description" content="I've been building on Base since ${frameData.transactionData.date}! 🔵 It's been ${frameData.transactionData.daysSince} days since my first Base transaction!" />
+      <meta property="og:description" content="I've been building on Base since ${frameData.transactionData.date}! 🟦 It's been ${frameData.transactionData.daysSince} days since my first Base transaction!" />
     `;
   }
 }
