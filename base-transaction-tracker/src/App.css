@@ -8,9 +8,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  background: linear-gradient(135deg, #0052ff 0%, #00a7ff 50%, #0052ff 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
+  background: #ffffff;
   color: #1a1a1a;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,11 +17,6 @@
   overflow-x: hidden;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 .container {
   max-width: 100%;
   width: 100%;
@@ -47,10 +40,7 @@
 .header h1 {
   font-size: 1.1rem;
   margin-bottom: 3px;
-  background: linear-gradient(135deg, #0052ff, #00a7ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1a1a1a;
   line-height: 1.2;
   margin-top: 0;
   font-weight: 800;
@@ -67,9 +57,9 @@
 .farcaster-addresses {
   margin: 8px 0;
   padding: 8px;
-  background: linear-gradient(135deg, rgba(0, 82, 255, 0.03), rgba(0, 167, 255, 0.03));
+  background: #f8f9fa;
   border-radius: 8px;
-  border: 1px solid rgba(0, 82, 255, 0.2);
+  border: 1px solid #e0e0e0;
 }
 
 .addresses-label {
@@ -127,9 +117,8 @@
   width: 100%;
   padding: 8px;
   border-radius: 10px;
-  border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #0052ff, #00a7ff) border-box;
+  border: 2px solid #e0e0e0;
+  background: white;
   color: #1a1a1a;
   font-size: 0.8rem;
   box-sizing: border-box;
@@ -196,9 +185,8 @@
   margin-top: 8px;
   padding: 10px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 82, 255, 0.05), rgba(0, 167, 255, 0.05));
-  border: 2px solid;
-  border-image: linear-gradient(135deg, #0052ff, #00a7ff) 1;
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
   animation: fadeInUp 0.5s ease;
 }
 
