@@ -238,7 +238,14 @@ ${appUrl}`);
           </div>
           
           <button onClick={handleShare} className="share-button">
-            Share My Base Journey 🚀
+            Share Base Journey 🚀
+          </button>
+          <button onClick={() => {
+            setTransactionData(null);
+            setError(null);
+            setAddress('');
+          }} className="check-another-button">
+            Check Another Address
           </button>
         </div>
       )}
