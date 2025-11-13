@@ -20,7 +20,6 @@ const BaseTransactionTracker: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
   const [farcasterAddresses, setFarcasterAddresses] = useState<string[]>([]);
-  const [loadingAddresses, setLoadingAddresses] = useState<boolean>(false);
   
   // Get connected wallet data from Wagmi
   const { address: connectedAddress, isConnected } = useAccount();
@@ -53,7 +52,6 @@ const BaseTransactionTracker: React.FC = () => {
   };
 
   const fetchFarcasterAddresses = async () => {
-    setLoadingAddresses(true);
     try {
       const context = await sdk.context;
       if (context?.user) {
@@ -73,8 +71,6 @@ const BaseTransactionTracker: React.FC = () => {
       }
     } catch (err) {
       console.error('Failed to fetch Farcaster addresses:', err);
-    } finally {
-      setLoadingAddresses(false);
     }
   };
 
